@@ -56,6 +56,6 @@ public class bunnykill {
 				if (matrix[row][col] > 0) kills++;
 			}
 		}// counts kills and damage
-		System.out.println(kills + "\n" + damage);
+		System.out.println(damage + "\n" + kills);
 	}
 }
