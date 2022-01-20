@@ -8,6 +8,7 @@ public class Medenki {
 	  int viktor = 0, naskor = 0, medenka = 0;
 	  int blackattack = 0, whiteattack = 0;
 	  int blackconsec = 1, whiteconsec = 1;
+	  int attacksave = 0;
 	  
 	  while(medenka != 10000) {
 		  
@@ -22,12 +23,17 @@ public class Medenki {
 			 blackattack = medenka;
 			 for(int counter=0;counter < medenka; medenka--) {
 				 
+				 if(medenka*60 == attacksave) {
+					 blackconsec = 2;
+					 attacksave = 0;
+				 }
 				 if(blackconsec%5 == 0) {
 					 naskor += 270*medenka;
 					 blackconsec = 1;
+					 attacksave = 270*medenka;
 					 medenka = 0;
 				 }
-				 else naskor += 60;
+				 else naskor += 60;	
 			 }
 		  }
 		  if (splitter[1].equals("white")) {
@@ -37,7 +43,7 @@ public class Medenki {
 				  
 				  if (whiteconsec%2 == 0) {
 					  viktor += 165*medenka;
-					  whiteconsec = 1;
+					  whiteconsec = 0;
 					  medenka = 0;
 				  }
 				  else viktor += 60;
@@ -45,6 +51,7 @@ public class Medenki {
 			  }
 		  }
 	  }
+	  System.out.println(naskor);
 	  if (viktor > naskor) System.out.println("Winner - Viktor" + '\n' + "Damage - " + viktor);
 	  else System.out.println("Winner - Naskor" + '\n' + "Damage - " + naskor);
   }
