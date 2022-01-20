@@ -51,7 +51,6 @@ public class Medenki {
 			  }
 		  }
 	  }
-	  System.out.println(naskor);
 	  if (viktor > naskor) System.out.println("Winner - Viktor" + '\n' + "Damage - " + viktor);
 	  else System.out.println("Winner - Naskor" + '\n' + "Damage - " + naskor);
   }
