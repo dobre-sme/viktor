@@ -4,7 +4,7 @@ public class Lambada {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
         String expression = scan.nextLine();
-        Map<String, String> lambadas = new HashMap<>();
+        Map<String, String> lambadas = new LinkedHashMap<>();
         String lastExpres = "";
 
         while (!expression.equals("lambada")) {
