@@ -15,7 +15,8 @@ public class CommandManager{
     public void RegisterExpressSoftware(String hardwareComponentName, String name, int capacity, int memory) {
         for (Map.Entry<Hardware, List<Software>> entry : Hardware.hardwareMap.entrySet()) {
             if (entry.getKey().getName().equals(hardwareComponentName)) {
-                if (entry.getKey().getMaxCapacity() >= capacity && entry.getKey().getMaxMemory() >= memory*2) {
+                if (entry.getKey().getMaxCapacity() >= entry.getKey().getSoftwareCapacity()+capacity &&
+                        entry.getKey().getMaxMemory() >= entry.getKey().getSoftwareMemory()+(memory*2)) {
                     Hardware.hardwareMap.get(entry.getKey()).add(new ExpressSoftware(hardwareComponentName, name, capacity, memory));
                     entry.getKey().setSoftwareCapacity(entry.getKey().getSoftwareCapacity() + capacity);
                     entry.getKey().setSoftwareMemory(entry.getKey().getSoftwareMemory() + (memory*2));
@@ -27,10 +28,23 @@ public class CommandManager{
     public void RegisterLightSoftware(String hardwareComponentName, String name, int capacity, int memory) {
         for (Map.Entry<Hardware, List<Software>> entry : Hardware.hardwareMap.entrySet()) {
             if (entry.getKey().getName().equals(hardwareComponentName)) {
-                if (entry.getKey().getMaxCapacity() >= capacity+(capacity/2) && entry.getKey().getMaxMemory() >= memory/2) {
+                if (entry.getKey().getMaxCapacity() >= entry.getKey().getSoftwareCapacity() + (capacity+(capacity/2)) &&
+                        entry.getKey().getMaxMemory() >= entry.getKey().getSoftwareMemory() + (memory/2)) {
                     Hardware.hardwareMap.get(entry.getKey()).add(new LightSoftware(hardwareComponentName, name, capacity, memory));
                     entry.getKey().setSoftwareCapacity(entry.getKey().getSoftwareCapacity() + (capacity+(capacity/2)));
                     entry.getKey().setSoftwareMemory(entry.getKey().getSoftwareMemory() + (memory/2));
+                }
+            }
+        }
+    }
+
+    public void ReleaseSoftwareComponent(String hardwareComponentName, String softwareComponentName) {
+        for (Map.Entry<Hardware, List<Software>> entry : Hardware.hardwareMap.entrySet()) {
+            if (entry.getKey().getName().equals(hardwareComponentName)) {
+                for (int i = 0; i < entry.getValue().size(); i++) {
+                    if (entry.getValue().get(i).getName().equals(softwareComponentName)) {
+                        Hardware.hardwareMap.get(entry.getKey()).remove(entry.getValue().get(i));
+                    }
                 }
             }
         }
@@ -51,5 +65,7 @@ public class CommandManager{
         System.out.println("Total Operational Memory: " + currentMemory + " / " + maxMemory);
         System.out.println("Total Capacity Taken: " + currentCapacity + " / " + maxCapacity);
     }
+
+
 
 }

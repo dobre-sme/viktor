@@ -38,6 +38,8 @@ public class Main {
                     case "RegisterLightSoftware":
                         commandManager.RegisterLightSoftware(values[0], values[1], Integer.parseInt(values[2]), Integer.parseInt(values[3]));
                         break;
+                    case "ReleaseSoftwareComponent":
+                        commandManager.ReleaseSoftwareComponent(values[0], values[1]);
                 }
             }
 
