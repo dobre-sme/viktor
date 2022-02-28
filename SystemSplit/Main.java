@@ -40,11 +40,12 @@ public class Main {
                         break;
                     case "ReleaseSoftwareComponent":
                         commandManager.ReleaseSoftwareComponent(values[0], values[1]);
+                        break;
                 }
             }
 
             command = scan.nextLine();
         }
-
+        commandManager.SystemSplit();
     }
 }

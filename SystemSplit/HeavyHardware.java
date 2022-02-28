@@ -4,9 +4,7 @@ public class HeavyHardware extends Hardware{
         setName(name);
         setMaxCapacity(capacity*2);
         setMaxMemory((memory*3)/4);
-        setType("HeavyHardware");
-        setSoftwareCapacity(0);
-        setSoftwareMemory(0);
+        setType("Heavy");
     }
 
 }

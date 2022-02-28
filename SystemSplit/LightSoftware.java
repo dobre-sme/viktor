@@ -5,7 +5,7 @@ public class LightSoftware extends Software{
         setCapacityConsumption(capacity+(capacity/2));
         setMemoryConsumption(memory/2);
         setHardwareComponentName(hardwareComponentName);
-        setType("LightSoftware");
+        setType("Light");
     }
 
 }

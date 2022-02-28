@@ -4,9 +4,7 @@ public class PowerHardware extends Hardware{
         setName(name);
         setMaxCapacity(capacity-((capacity*3)/4));
         setMaxMemory(memory+((memory*3)/4));
-        setType("PowerHardware");
-        setSoftwareCapacity(0);
-        setSoftwareMemory(0);
+        setType("Power");
     }
 
 }

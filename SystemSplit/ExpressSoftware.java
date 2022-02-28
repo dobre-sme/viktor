@@ -5,7 +5,7 @@ public class ExpressSoftware extends Software{
         setCapacityConsumption(capacity);
         setMemoryConsumption(memory*2);
         setHardwareComponentName(hardwareComponentName);
-        setType("ExpressSoftware");
+        setType("Express");
     }
 
 }
