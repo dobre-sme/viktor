@@ -11,12 +11,12 @@ public class Main {
         String pattern = "(?<command>[A-Z-a-z]+)([(])(?<values>.+)([)])";
         Pattern compiler = Pattern.compile(pattern);
 
-        CommandManager commandManager = new CommandManager();
+        TheSystem system = new TheSystem();
 
         while (!command.equals("System Split")) {
 
             if (command.equals("Analyze()")) {
-                commandManager.Analyze();
+                system.Analyze();
             }
             else {
 
@@ -27,25 +27,24 @@ public class Main {
                 switch (matcher.group("command")) {
 
                     case "RegisterPowerHardware":
-                        commandManager.RegisterPowerHardware(values[0], Integer.parseInt(values[1]), Integer.parseInt(values[2]));
+                        system.RegisterPowerHardware(values[0], Integer.parseInt(values[1]), Integer.parseInt(values[2]));
                         break;
                     case "RegisterHeavyHardware":
-                        commandManager.RegisterHeavyHardware(values[0], Integer.parseInt(values[1]), Integer.parseInt(values[2]));
+                        system.RegisterHeavyHardware(values[0], Integer.parseInt(values[1]), Integer.parseInt(values[2]));
                         break;
                     case "RegisterExpressSoftware":
-                        commandManager.RegisterExpressSoftware(values[0], values[1], Integer.parseInt(values[2]), Integer.parseInt(values[3]));
+                        system.RegisterExpressSoftware(values[0], values[1], Integer.parseInt(values[2]), Integer.parseInt(values[3]));
                         break;
                     case "RegisterLightSoftware":
-                        commandManager.RegisterLightSoftware(values[0], values[1], Integer.parseInt(values[2]), Integer.parseInt(values[3]));
+                        system.RegisterLightSoftware(values[0], values[1], Integer.parseInt(values[2]), Integer.parseInt(values[3]));
                         break;
                     case "ReleaseSoftwareComponent":
-                        commandManager.ReleaseSoftwareComponent(values[0], values[1]);
+                        system.ReleaseSoftwareComponent(values[0], values[1]);
                         break;
                 }
             }
-
             command = scan.nextLine();
         }
-        commandManager.SystemSplit();
+        system.SystemSplit();
     }
 }

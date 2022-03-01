@@ -1,13 +1,11 @@
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 public abstract class Hardware {
 
     private String name, type;
     private int maxCapacity, maxMemory, softwareCapacity, softwareMemory;
-    static Map<Hardware, List<Software>> hardwareMap = new HashMap<>();
+    public List<Software> softwareList = new ArrayList<>();
 
     public void setName(String name) {
         this.name = name;

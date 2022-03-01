@@ -1,11 +1,7 @@
-import java.util.ArrayList;
-import java.util.List;
-
 public class Software {
 
     private String name, type, hardwareComponentName;
     private int capacityConsumption, memoryConsumption;
-    List<Software> softwareList = new ArrayList<>();
 
     public String getName() {
         return name;
