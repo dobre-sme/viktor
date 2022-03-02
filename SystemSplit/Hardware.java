@@ -5,7 +5,7 @@ public abstract class Hardware {
 
     private String name, type;
     private int maxCapacity, maxMemory, softwareCapacity, softwareMemory;
-    public List<Software> softwareList = new ArrayList<>();
+    private final List<Software> softwareList = new ArrayList<>();
 
     public void setName(String name) {
         this.name = name;
@@ -53,5 +53,13 @@ public abstract class Hardware {
 
     public void setSoftwareCapacity(int softwareCapacity) {
         this.softwareCapacity = softwareCapacity;
+    }
+
+    public List<Software> getSoftwareList() {
+        return softwareList;
+    }
+
+    public void addSoftware(Software software) {
+        softwareList.add(software);
     }
 }

@@ -3,7 +3,7 @@ import java.util.List;
 
 public class TheSystem {
 
-    List<Hardware> hardwareList = new ArrayList<>();
+    private final List<Hardware> hardwareList = new ArrayList<>();
 
     public void RegisterPowerHardware(String name, int capacity, int memory) {
         hardwareList.add(new PowerHardware(name, capacity, memory));
@@ -18,7 +18,7 @@ public class TheSystem {
             if (hardware.getName().equals(hardwareComponentName)) {
                 if (hardware.getMaxCapacity() >= hardware.getSoftwareCapacity() + capacity &&
                         hardware.getMaxMemory() >= hardware.getSoftwareMemory() + (memory * 2)) {
-                    hardware.softwareList.add(new ExpressSoftware(hardwareComponentName, name, capacity, memory));
+                    hardware.addSoftware(new ExpressSoftware(hardwareComponentName, name, capacity, memory));
                     hardware.setSoftwareCapacity(hardware.getSoftwareCapacity() + capacity);
                     hardware.setSoftwareMemory(hardware.getSoftwareMemory() + (memory * 2));
                 }
@@ -31,7 +31,7 @@ public class TheSystem {
             if (hardware.getName().equals(hardwareComponentName)) {
                 if (hardware.getMaxCapacity() >= hardware.getSoftwareCapacity() + (capacity + (capacity / 2)) &&
                         hardware.getMaxMemory() >= hardware.getSoftwareMemory() + (memory / 2)) {
-                    hardware.softwareList.add(new LightSoftware(hardwareComponentName, name, capacity, memory));
+                    hardware.addSoftware(new LightSoftware(hardwareComponentName, name, capacity, memory));
                     hardware.setSoftwareCapacity(hardware.getSoftwareCapacity() + (capacity + (capacity / 2)));
                     hardware.setSoftwareMemory(hardware.getSoftwareMemory() + (memory / 2));
                 }
@@ -42,7 +42,7 @@ public class TheSystem {
     public void ReleaseSoftwareComponent(String hardwareComponentName, String softwareComponentName) {
         for (Hardware hardware : hardwareList) {
             if (hardware.getName().equals(hardwareComponentName)) {
-                hardware.softwareList.removeIf(software -> software.getName().equals(softwareComponentName));
+                hardware.getSoftwareList().removeIf(software -> software.getName().equals(softwareComponentName));
             }
         }
     }
@@ -54,7 +54,7 @@ public class TheSystem {
             maxCapacity += hardware.getMaxCapacity();
             maxMemory += hardware.getMaxMemory();
             hardwareComponents++;
-            for (Software software : hardware.softwareList) {
+            for (Software software : hardware.getSoftwareList()) {
                 currentCapacity += software.getCapacityConsumption();
                 currentMemory += software.getMemoryConsumption();
                 softwareComponents++;
@@ -73,7 +73,7 @@ public class TheSystem {
             maxCapacity += hardware.getMaxCapacity();
             maxMemory += hardware.getMaxMemory();
             System.out.println("Hardware Component - " + hardware.getName());
-            for (Software software : hardware.softwareList) {
+            for (Software software : hardware.getSoftwareList()) {
                 currentCapacity += software.getCapacityConsumption();
                 currentMemory += software.getMemoryConsumption();
                 if (software.getType().equals("Express")) {
@@ -86,9 +86,9 @@ public class TheSystem {
             System.out.println("Capacity Usage: " + currentCapacity + " / " + maxCapacity);
             System.out.println("Type: " + hardware.getType());
             System.out.print("Software Components: ");
-            for (Software software : hardware.softwareList) {
+            for (Software software : hardware.getSoftwareList()) {
                 System.out.print(software.getName());
-                if (!software.equals(hardware.softwareList.get(hardware.softwareList.size()-1))) {
+                if (!software.equals(hardware.getSoftwareList().get(hardware.getSoftwareList().size()-1))) {
                     System.out.print(", ");
                 }
             }
