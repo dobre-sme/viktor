@@ -3,14 +3,16 @@ import java.util.stream.Collectors;
 
 public class Centers {
 
-    String name;
+    private String name;
     public Centers (String name) {
         this.name = name;
     }
 
-    public static List orderAnimals (List<String> name) {
-        List<String> orderedList = name.stream().sorted().collect(Collectors.toList());
-        return orderedList;
+    public String getName() {
+        return name;
     }
 
+    public void setName(String name) {
+        this.name = name;
+    }
 }

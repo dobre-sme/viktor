@@ -2,10 +2,17 @@ import java.util.*;
 
 public class AdoptionCenter extends Centers {
 
-    static Map<String, List<Animal>> adoptionCenters = new HashMap<>();
-    static List<String> adoptedAnimals = new ArrayList<>();
+    private final List<Animal> animals = new ArrayList<>();
 
     public AdoptionCenter(String name) {
         super(name);
+    }
+
+    public void addAnimal(Animal animal) {
+        animals.add(animal);
+    }
+
+    public List<Animal> getAnimalList() {
+        return animals;
     }
 }
